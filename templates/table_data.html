@@ -1,0 +1,38 @@
+<!-- HTML FOR JINJA2 - PART 2 -->
+<!-- USE WIHT THE PYTHON FILE PROVIDED -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>movie durations</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+
+    <body>
+        <h2>This Collection Belongs to {{ name }} </h2>
+        <!--the following url_for is ony for your understanding. dont include this in your projects-->
+
+        <table>
+            <tr>
+                <th> movie </th>
+                <th> length </th>
+                <th> comments </th>
+            </tr>
+
+            {% for movie, length in movies.items() %}
+                <tr>
+                    <td> {{ movie }} </td>
+                    <td> {{ length }} </td>
+                        {% if length <= 2 %}
+                            <td> short </td>
+                        {% elif length >= 2 and length <=3 %}
+                            <td> medium </td>
+                        {% else %}
+                            <td style="color: red">long</td>
+                        {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
